@@ -25,7 +25,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 Cypress.Commands.add("login", (email, senha) => {
-  cy.visit('/login')
+  cy.visit("/login");
   cy.get(
     '[data-test="login-email"] > .MuiInputBase-root > .MuiInputBase-input'
   ).type(email);
@@ -33,4 +33,17 @@ Cypress.Commands.add("login", (email, senha) => {
     '[data-test="login-password"] > .MuiInputBase-root > .MuiInputBase-input'
   ).type(senha);
   cy.get('[data-test="login-submit"]').click();
+});
+
+Cypress.Commands.add("gerarToken", (email, senha) => {
+  cy.request({
+    method: "POST",
+    url: "/api/auth",
+    body: {
+      email: email,
+      password: senha,
+    },
+  }).then((response) => {
+    return response.body.jwt
+  });
 });

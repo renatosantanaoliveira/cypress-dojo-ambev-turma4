@@ -10,11 +10,21 @@ describe('Funcionalidade: Criar Perfil', () => {
         cy.visit('/criar-perfil')
     });
 
+    afterEach(() => {
+        cy.screenshot()
+        cy.log('Evidência gerada com sucesso')
+    })
+
     it('Deve criar perfil com sucesso', () => {
+        const cargo = "Especialista em QA"
+
         cy.get('#mui-component-select-status').click()
 
         // cy.get('.MuiList-root').contains('Especialista em QA').click()
-        cy.get('.MuiList-root').find('li[data-value="Especialista em QA"]').click()
+        // cy.get('.MuiList-root').find('li[data-value=' + cargo + ']').click()
+        cy.get('.MuiList-root').find(`li[data-value="${cargo}"]`).click()
+        cy.wait(1000)
+        cy.log('Selecionado o cargo com sucesso')
         // cy.contains('Especialista em QA').click()
         cy.get('[data-test="profile-company"] > .MuiInputBase-root > .MuiInputBase-input').type('Via')
         cy.get('[data-test="profile-webSite"] > .MuiInputBase-root > .MuiInputBase-input').type('http://www.viahub.com')
@@ -24,6 +34,6 @@ describe('Funcionalidade: Criar Perfil', () => {
         cy.get('[data-test="profile-bio"] > .MuiInputBase-root').type('Olá, sou o Renato Santana')
         cy.get('[data-test="profile-submit"]').click()
 
-        cy.get('[data-test="dashboard-deleteProfile"]').should('exist')
+        cy.get('[data-test="dashboard-deleteProfil"]').should('exist')
     });
 });
