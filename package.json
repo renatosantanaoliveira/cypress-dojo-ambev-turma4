@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "cy:open": "npx cypress open",
-    "cy:run": "npx cypress run --config video=false"
+    "cy:headless": "npx cypress run --config video=false",
+    "cy:headless:chrome": "npx cypress run --config video=false --browser chrome:canary",
+    "cy:dash": "cypress run --record --key db1dcf8f-4f9e-4dd0-a652-8c3468cfb1da"
   },
   "repository": {
     "type": "git",
