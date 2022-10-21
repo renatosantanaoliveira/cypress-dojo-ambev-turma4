@@ -15,7 +15,7 @@ describe('Funcionalidade: Criar Perfil', () => {
         cy.log('Evidência gerada com sucesso')
     })
 
-    it('Deve criar perfil com sucesso', () => {
+    it.skip('Deve criar perfil com sucesso', () => {
         const cargo = "Especialista em QA"
 
         cy.get('#mui-component-select-status').click()
