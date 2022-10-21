@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     container: cypress/browsers:node16.17.1-chrome105-ff104-edge
     strategy:
-      fail_fast: false
+      fail-fast: false
       matrix:
         containers: [1, 2, 3, 4]
     steps:
